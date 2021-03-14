@@ -1,0 +1,36 @@
+<html>
+<body>
+<h1 style="text-align:center; margin-top:50px">Quiz</h1>
+<div class="container-fluid">
+<div class="column">
+	{% block content %}
+		<div style="text-align:center;margin-left:auto;margin-right:auto;display:table;"> 
+			{% if lang == "g" %}
+				<form action="{% url 'quiz_result' %}" method="get">
+					<p style="text-align:center">Frage {{ inumber }} von {{ qnumber }} </p> 
+					<p style="text-align:center; margin-top:50px">Wort:  {{ iofqs.0 }}</p>
+					<p style="text-align:center"><input name="answer" type="text"></p>
+					<p style="text-align:center">{{ correct }} von {{ qnumber }} richtig</p> 
+					<button style="text-align:center; margin-top:50px" type = “submit”>Einreichen</button>
+				</form>
+				<form action="{% url 'index' %}" method="get">
+					<button style="text-align:center; margin-top:50px" type = “submit”>Zurück zum Hauptmenü</button>
+				</form>
+			{% else %}
+				<form action="{% url 'quiz_result' %}" method="get">
+					<p style="text-align:center">Question {{ inumber }} of {{ qnumber }} </p> 
+					<p style="text-align:center; margin-top:50px">Word:  {{ iofqs.1 }}</p>
+					<p style="text-align:center"><input name="answer" type="text"></p>
+					<p style="text-align:center">{{ correct }} of {{ qnumber }} correct</p> 
+					<button style="text-align:center; margin-top:50px" type = “submit”>Submit</button>
+				</form>
+				<form action="{% url 'index' %}" method="get">
+					<button style="text-align:center; margin-top:50px" type = “submit”>Return to Main Menu</button>
+				</form>			
+			{% endif %} 
+		</div>
+	{% endblock %}
+</div>
+</div>
+</body>
+</html>

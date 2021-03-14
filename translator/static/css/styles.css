@@ -1,0 +1,24 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+div.relative {
+  margin-top: 20px;
+  position: relative;
+  left: 400px;
+}
+
+div.results {
+  margin-top: 20px;
+  position: relative;
+  left: 100px;
+}
+
+form  	{ display: table;      }
+p     	{ display: table-row;  }
+ul     	{ display: table-row;  }
+label 	{ display: table-cell; }
+input 	{ display: table-cell; }
+

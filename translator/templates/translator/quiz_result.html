@@ -1,0 +1,60 @@
+<html>
+<body>
+<h1 style="text-align:center; margin-top:50px">Quiz</h1>
+<div class="container-fluid">
+<div class="column">
+	{% block content %}
+		<div style="text-align:center;margin-left:auto;margin-right:auto;display:table;"> 
+			{% if lang == "g" %}
+				<form action="{% url 'quiz_result' %}" method="get">
+					<p style="text-align:center">Frage {{ inumber }} von {{ qnumber }} </p> 
+					<p style="text-align:center; margin-top:50px">Wort:  {{ iofqs.0 }}</p>
+					<p style="text-align:center">Antwort:  {{ iofqs.1 }}</p>
+					<p style="text-align:center">{{ resp }}</p>
+					<p style="text-align:center">{{ correct }} von {{ qnumber }} richtig</p> 
+				</form>
+			{% else %}
+				<form action="{% url 'quiz_result' %}" method="get">
+					<p style="text-align:center">Question {{ inumber }} of {{ qnumber }} </p> 
+					<p style="text-align:center; margin-top:50px">Word:  {{ iofqs.1 }}</p>
+					<p style="text-align:center">Answer:  {{ iofqs.0 }}</p>
+					<p style="text-align:center">{{ resp }}</p>
+					<p style="text-align:center">{{ correct }} of {{ qnumber }} correct</p> 
+				</form>
+			{% endif %} 
+		</div>
+		{% if inumber == qnumber %}
+			<div style="text-align:center;margin-left:auto;margin-right:auto;display:table;"> 
+			<form action="{% url 'index' %}" method="get">
+			{% if lang == 'g' %}
+				<button style="text-align:center; margin-top:50px" type = “submit”>Zurück zum Hauptmenü</button>
+			{% else %}
+				<button style="text-align:center; margin-top:50px" type = “submit”>Back to Main Menu</button>
+			{% endif %}
+			</form>
+			</div>
+		{% else %}
+			<div style="text-align:center;margin-left:auto;margin-right:auto;display:table;"> 
+			<form action="{% url 'quiz_detail' %}" method="get">
+			{% if lang == 'g' %}
+				<button style="text-align:center; margin-top:50px" type = “submit”>Fortsetzen</button>
+			{% else %}
+				<button style="text-align:center; margin-top:50px" type = “submit”>Continue</button>
+			{% endif %}
+			</form>
+			{% if lang == 'g' %}
+				<form action="{% url 'index' %}" method="get">
+					<button style="text-align:center; margin-top:50px" type = “submit”>Zurück zum Hauptmenü</button>
+				</form>
+			{% else %}
+				<form action="{% url 'index' %}" method="get">
+					<button style="text-align:center; margin-top:50px" type = “submit”>Return to Main Menu</button>
+				</form>	
+			{% endif %}
+			</div>
+		{% endif %}
+	{% endblock %}
+</div>
+</div>
+</body>
+</html>

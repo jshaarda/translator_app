@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>German/English Translator</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<div class="container-fluid">
+<div class="column">
+	{% block content %}
+	{% if word_list %}
+		<div style="text-align:center;margin-left:auto;margin-right:auto;display:table;"> 
+		{% if lang == "g" %}
+			<form action="{% url 'trang_results' %}" method="get">
+				<h1 style="text-align:center; margin-top:50px">Was ist die Übersetzung von</h1>
+				<p style="text-align:center"><input name="getword" type="text"></p>
+				<h1 style="text-align:center">?</h1>
+				<button style="text-align:center; margin-top:50px" type = “submit”>Einreichen</button>
+			</form>
+		{% else %}
+			<form action="{% url 'trane_results' %}" method="get">
+				<h1 style="text-align:center; margin-top:50px">What is the translation of</h1>
+				<p style="text-align:center"><input name="getword" type="text"></p>
+				<h1 style="text-align:center">?</h1>
+				<button style="text-align:center; margin-top:50px" type = “submit”>Submit</button>
+			</form>
+		{% endif %} 
+		</div>
+    {% else %}
+		<p>There are no words to translate.</p>
+    {% endif %} 
+{% endblock %}
+</div>
+</div>
+</body>
+</html>

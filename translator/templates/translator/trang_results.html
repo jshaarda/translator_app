@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>German/English Translator</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<div class="container-fluid">
+<div style="text-align:center">
+	{% block content %}
+	<h1 style="text-align:center">Übersetzungen</h1>
+	<ul style="display: inline-block; text-align:center; list-style:none">
+	{% for Word in object_list %}
+			<li style="text-align:left"> {{ Word.german }} </li>
+			<li style="text-align:left"> {{ Word.english }} </li>
+			<li><br></li>
+	{% endfor %}
+	<form action="{% url 'tranG' %}" method="get">
+		<button style="text-align:center; margin-left:-15px" type = “submit”>Vorheriger</button>
+	</form>
+	</ul>
+	{% endblock %}
+</div>
+</div>
+</body>
+</html>
